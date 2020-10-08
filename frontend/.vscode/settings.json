@@ -22,4 +22,7 @@
     "[typescriptreact]": {
         "editor.formatOnSave": false
     },
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#0c1e31" // Change this color!
+    }
 }

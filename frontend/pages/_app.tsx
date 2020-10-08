@@ -9,6 +9,7 @@ import { theme } from '@/theme';
 import 'fontsource-roboto/400-normal.css';
 import 'fontsource-roboto/500-normal.css';
 import 'fontsource-roboto/700-normal.css';
+import 'fontsource-montserrat/700-normal.css';
 
 import { Layout } from '@/components';
 

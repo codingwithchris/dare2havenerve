@@ -49,7 +49,7 @@ export default {
         {
             name: 'vimeoID',
             title: 'Vimeo Video ID',
-            type: 'url',
+            type: 'string',
             description: 'The ID of the the Vimeo video we want to embed',
         },
         {
@@ -59,7 +59,7 @@ export default {
             of: [
                 {
                     type: 'reference',
-                    to: [{ type: 'organization' }, { type: 'actor' }],
+                    to: [{ type: 'organization' }],
                 },
             ],
         },
