@@ -1,8 +1,10 @@
 import React from 'react';
 
+import styles from './Video.module.css';
+
 export const Video: React.FC<VideoProps> = ({ vimeoID }) => {
     return (
-        <div className="video">
+        <div className={styles.video}>
             <iframe
                 title="performance"
                 src={`https://player.vimeo.com/video/${vimeoID}`}

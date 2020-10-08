@@ -1,14 +1,27 @@
 // post.js
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
 import sanityClient from '@/lib/client';
+
+import { isPast } from 'date-fns';
 
 import { Box, Container, Typography } from '@material-ui/core';
 
-import { Page, Video } from '@/components';
+import { Page, DonateForm, Video } from '@/components';
 
 const Performance: NextPage<PerformanceProps> = (props) => {
-    const { name, vimeoID, releaseDate, organizations, actors } = props;
+    const {
+        name,
+        vimeoID,
+        releaseDate,
+        organizations,
+        actors,
+        sponsors,
+    } = props;
+
+    const isReleased = isPast(new Date(releaseDate));
+
+    // logic for 404
+    // logic for un-released video date
 
     return (
         <Page
@@ -18,6 +31,7 @@ const Performance: NextPage<PerformanceProps> = (props) => {
             <Box className="app-content" py={20}>
                 {name}
                 <Video vimeoID={vimeoID} />
+                <DonateForm />
             </Box>
         </Page>
     );
@@ -38,6 +52,13 @@ const singlePerformanceQuery = `*[_type == "performance" && slug.current == $slu
     },
     actors[]->{
         name
+    },
+    sponsors[]->{
+        name,
+        bio,
+        "logo": logo.asset._ref,
+        website,
+        match
     }
 }`;
 
@@ -61,6 +82,14 @@ type Actor = {
     name: string;
 };
 
+type Sponsor = {
+    name: string;
+    logo: string;
+    bio: string;
+    website: string;
+    match: string;
+};
+
 interface PerformanceProps {
     name: string;
     vimeoID: string;
@@ -68,6 +97,7 @@ interface PerformanceProps {
     logo: string;
     organizations: Organization[];
     actors: Actor[];
+    sponsors: Sponsor[];
 }
 
 export default Performance;
