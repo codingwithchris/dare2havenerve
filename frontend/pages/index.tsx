@@ -14,3 +14,5 @@ export default function Home() {
         </Page>
     );
 }
+
+const allPerformancesQuery = `*[_type == "performance"] | order(releaseDate asc)`;

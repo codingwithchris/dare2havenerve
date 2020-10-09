@@ -1,14 +1,17 @@
 import Head from 'next/head';
+import { isSSR } from '@/lib/ssr';
 import styles from './DonateForm.module.css';
 
 export const DonateForm: React.FC = () => {
     return (
         <>
             <Head>
-                <script
-                    src="https://donorbox.org/widget.js"
-                    paypalExpress="true"
-                />
+                {!isSSR && (
+                    <script
+                        src="https://donorbox.org/widget.js"
+                        paypalExpress="true"
+                    />
+                )}
             </Head>
             <div className={styles.donateForm}>
                 <iframe
@@ -19,7 +22,7 @@ export const DonateForm: React.FC = () => {
                     name="donorbox"
                     scrolling="no"
                     seamless="seamless"
-                    src="https://donorbox.org/embed/dare2havenerve-fundraiser"
+                    src="https://donorbox.org/embed/dare2havenerve-fundraiser?donation_meter_color=%2341a2d8"
                     style={{
                         maxWidth: '500px',
                         minWidth: '250px',

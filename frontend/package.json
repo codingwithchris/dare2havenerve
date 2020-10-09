@@ -14,15 +14,13 @@
         "date-fns": "^2.16.1",
         "fontsource-montserrat": "^3.0.9",
         "fontsource-roboto": "^3.0.3",
-        "next": "9.5.3",
+        "next": "9.5.4",
         "react": "16.13.1",
-        "react-dom": "16.13.1",
-        "react-hook-form": "^6.9.1",
-        "styled-components": "^5.2.0"
+        "react-dom": "16.13.1"
     },
     "devDependencies": {
         "@codingwithchris/eslint-config": "^1.0.2",
-        "@types/node": "^14.11.5",
+        "@types/node": "^14.11.7",
         "@types/react": "^16.9.51",
         "@types/react-dom": "^16.9.8",
         "@typescript-eslint/eslint-plugin": "^4.4.0",

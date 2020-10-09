@@ -8,16 +8,17 @@ import { Box, Container, Typography } from '@material-ui/core';
 
 import { Page, DonateForm, Video } from '@/components';
 
-const Performance: NextPage<PerformanceProps> = (props) => {
-    const {
-        name,
-        vimeoID,
-        releaseDate,
-        organizations,
-        actors,
-        sponsors,
-    } = props;
-
+const PerformancePage: NextPage<PerformanceProps> = ({
+    name,
+    vimeoID,
+    releaseDate,
+    oranizations,
+    actors,
+    sponsors,
+    queuePosition,
+    totalPerformances,
+    sponsorMatch,
+}) => {
     const isReleased = isPast(new Date(releaseDate));
 
     // logic for 404
@@ -38,7 +39,6 @@ const Performance: NextPage<PerformanceProps> = (props) => {
 };
 
 const singlePerformanceQuery = `*[_type == "performance" && slug.current == $slug][0]{
-
     name,
     releaseDate,
     vimeoID,
@@ -62,11 +62,37 @@ const singlePerformanceQuery = `*[_type == "performance" && slug.current == $slu
     }
 }`;
 
-Performance.getInitialProps = async (context) => {
+const allPerformancesQuery = `*[_type == "performance"] | order(releaseDate asc)`;
+
+PerformancePage.getInitialProps = async (context) => {
     // It's important to default the slug so that it doesn't return "undefined"
     const { slug = '' } = context.query;
-    const results = await sanityClient.fetch(singlePerformanceQuery, { slug });
-    return results ?? { slug };
+    const getSinglePerformance = sanityClient.fetch(singlePerformanceQuery, {
+        slug,
+    });
+    const getAllPerformances = sanityClient.fetch(allPerformancesQuery, {});
+    const [singlePerformance, performances] = await Promise.all([
+        getSinglePerformance,
+        getAllPerformances,
+    ]);
+
+    // How many performances are there?
+    const totalPerformances = performances.length;
+
+    // Video X of X (where  in the queue was this video released)
+    const queuePosition: number =
+        performances.findIndex(
+            (performance: any) => performance.slug.current === slug
+        ) + 1;
+
+    return singlePerformance
+        ? {
+              ...singlePerformance,
+              slug,
+              queuePosition,
+              totalPerformances,
+          }
+        : {};
 };
 
 type Organization = {
@@ -90,7 +116,7 @@ type Sponsor = {
     match: string;
 };
 
-interface PerformanceProps {
+type Performance = {
     name: string;
     vimeoID: string;
     releaseDate: string;
@@ -98,6 +124,13 @@ interface PerformanceProps {
     organizations: Organization[];
     actors: Actor[];
     sponsors: Sponsor[];
+};
+
+interface PerformanceProps extends Performance {
+    slug: string;
+    queuePosition: number;
+    totalPerformances: number;
+    sponsorMatch: number;
 }
 
-export default Performance;
+export default PerformancePage;
