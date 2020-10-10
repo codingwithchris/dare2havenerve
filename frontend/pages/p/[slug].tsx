@@ -18,8 +18,13 @@ const PerformancePage: NextPage<PerformanceProps> = ({
     queuePosition,
     totalPerformances,
     sponsorMatch,
+    excludeFromCount,
 }) => {
     const isReleased = isPast(new Date(releaseDate));
+
+    console.log('queuePosition:', queuePosition);
+    console.log('totalPerformances:', totalPerformances);
+    console.log('excludeFromCount:', excludeFromCount);
 
     // logic for 404
     // logic for un-released video date
@@ -40,6 +45,8 @@ const PerformancePage: NextPage<PerformanceProps> = ({
 
 const singlePerformanceQuery = `*[_type == "performance" && slug.current == $slug][0]{
     name,
+    tldr,
+    excludeFromCount,
     releaseDate,
     vimeoID,
     organizations[]->{
@@ -62,7 +69,7 @@ const singlePerformanceQuery = `*[_type == "performance" && slug.current == $slu
     }
 }`;
 
-const allPerformancesQuery = `*[_type == "performance"] | order(releaseDate asc)`;
+const allPerformancesQuery = `*[_type == "performance" && excludeFromCount != true] | order(releaseDate asc)`;
 
 PerformancePage.getInitialProps = async (context) => {
     // It's important to default the slug so that it doesn't return "undefined"
@@ -79,11 +86,12 @@ PerformancePage.getInitialProps = async (context) => {
     // How many performances are there?
     const totalPerformances = performances.length;
 
-    // Video X of X (where  in the queue was this video released)
-    const queuePosition: number =
-        performances.findIndex(
-            (performance: any) => performance.slug.current === slug
-        ) + 1;
+    // Video X of X (where in the queue was this video released)
+    const queuePosition: number | undefined = singlePerformance.excludeFromCount
+        ? undefined
+        : performances.findIndex(
+              (performance: any) => performance.slug.current === slug
+          ) + 1;
 
     return singlePerformance
         ? {
@@ -118,8 +126,10 @@ type Sponsor = {
 
 type Performance = {
     name: string;
+    tldr: string;
     vimeoID: string;
     releaseDate: string;
+    excludeFromCount: boolean;
     logo: string;
     organizations: Organization[];
     actors: Actor[];

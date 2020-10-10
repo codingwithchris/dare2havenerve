@@ -5,12 +5,21 @@ export default {
     Title: 'Performances',
     type: 'document',
     icon: () => `🎥`,
+    initialValue: {
+        excludeFromCount: false,
+    },
     fields: [
         {
             name: 'name',
             title: 'Name',
             type: 'string',
             description: 'Name of the performance',
+        },
+        {
+            name: 'tldr',
+            title: 'TLDR',
+            type: 'string',
+            description: 'A very short description of the performance',
         },
         {
             title: 'Slug',
@@ -35,10 +44,11 @@ export default {
             },
         },
         {
-            name: 'description',
-            title: 'Description',
-            type: 'text',
-            description: 'Description of the performance',
+            name: 'excludeFromCount',
+            title: 'Exclude From Total Performance Count?',
+            type: 'boolean',
+            description:
+                'This will result in this video not being counted anywhere we are displaying the total performance count.',
         },
         {
             name: 'image',
