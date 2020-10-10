@@ -10,9 +10,10 @@ import { Page, DonateForm, Video } from '@/components';
 
 const PerformancePage: NextPage<PerformanceProps> = ({
     name,
+    tldr,
     vimeoID,
     releaseDate,
-    oranizations,
+    organizations,
     actors,
     sponsors,
     queuePosition,
@@ -21,10 +22,6 @@ const PerformancePage: NextPage<PerformanceProps> = ({
     excludeFromCount,
 }) => {
     const isReleased = isPast(new Date(releaseDate));
-
-    console.log('queuePosition:', queuePosition);
-    console.log('totalPerformances:', totalPerformances);
-    console.log('excludeFromCount:', excludeFromCount);
 
     // logic for 404
     // logic for un-released video date
@@ -93,12 +90,18 @@ PerformancePage.getInitialProps = async (context) => {
               (performance: any) => performance.slug.current === slug
           ) + 1;
 
+    let initSponsorMatch = 0; //eslint-disable-line
+    const totalSponsorMatch = singlePerformance.sponsors?.forEach(
+        (sponsor: Sponsor) => sponsor.match + totalSponsorMatch
+    );
+
     return singlePerformance
         ? {
               ...singlePerformance,
               slug,
               queuePosition,
               totalPerformances,
+              sponsorMatch: totalSponsorMatch ?? initSponsorMatch,
           }
         : {};
 };
