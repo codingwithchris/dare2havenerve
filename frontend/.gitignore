@@ -16,3 +16,8 @@
 
 # vercel
 .vercel
+
+.env
+.env.development
+.env.production
+.env.local
