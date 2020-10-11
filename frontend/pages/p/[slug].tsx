@@ -136,8 +136,8 @@ const PerformancePage: NextPage<PerformanceProps> = ({
 
     return (
         <Page
-            metaTitle={`${name} » Dare2Have Nerve Fundraiser`}
-            metaDescription={tldr}
+            metaTitle={`${name} » Dare 2 Have Nerve`}
+            metaDescription={`${tldr} Part of the Dare 2 Have Nerve Collaborative Fundraiser between D2D and The Nerve.`} //eslint-disable-line
             url={url}
             imageURL={`${image.url}?h=900`}
             imageAlt={image.alt}

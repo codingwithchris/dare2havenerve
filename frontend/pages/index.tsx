@@ -217,7 +217,7 @@ const HomePage: NextPage<PerformanceProps> = ({ performances }) => {
                         </Box>
                         <Box mt={7}>
                             <Button className="bg-gradient" href="#performances">
-                                Watch The Performances
+                                Watch Performances + Donate
                             </Button>
                         </Box>
                     </Container>
