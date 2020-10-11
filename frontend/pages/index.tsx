@@ -122,7 +122,7 @@ const UnlockedCard: React.FC<Pick<Performance, 'name' | 'releaseDate' | 'slug' |
                         {organizations?.length > 0 && <OrgAvatars organizations={organizations} />}
                         <CardMedia
                             className={cardClasses.media}
-                            image={`${image.url}?h=225`}
+                            image={`${image.url}?h=350`}
                             alt={image.alt}
                             component="img"
                         />
@@ -162,7 +162,7 @@ const LockedCard: React.FC<Pick<Performance, 'name' | 'releaseDate' | 'slug' | '
                 </Box>
                 <CardMedia
                     className={cardClasses.lockedMedia}
-                    image={`${image.url}?h=225&blur=100`}
+                    image={`${image.url}?h=350&blur=100`}
                     alt={image.alt}
                     component="img"
                 />
