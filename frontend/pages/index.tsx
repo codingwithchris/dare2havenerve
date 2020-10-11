@@ -33,6 +33,12 @@ const heroStyles = makeStyles((theme: Theme) =>
 
 const gridStyles = makeStyles((theme: Theme) =>
     createStyles({
+        section: {
+            [theme.breakpoints.down('sm')]: {
+                paddingTop: theme.spacing(10),
+                paddingBottom: theme.spacing(10),
+            },
+        },
         container: {},
         item: {},
     })
@@ -228,7 +234,7 @@ const HomePage: NextPage<PerformanceProps> = ({ performances }) => {
 
                 {/* Performance Grid */}
                 {performances && (
-                    <Box id="performances" py={20}>
+                    <Box id="performances" py={20} className={gridClasses.section}>
                         <Container>
                             <Grid className={gridClasses.container} spacing={3} alignItems="stretch" container>
                                 {performances.map((performance) => {
