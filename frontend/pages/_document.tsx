@@ -8,10 +8,7 @@ export default class CustomDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
-                    <meta
-                        name="theme-color"
-                        content={theme.palette.primary.main}
-                    />
+                    <meta name="theme-color" content={theme.palette.primary.main} />
                 </Head>
                 <body>
                     <Main />
@@ -39,9 +36,6 @@ CustomDocument.getInitialProps = async (ctx) => {
     return {
         ...initialProps,
         // Styles fragment is rendered after the app and page rendering finish.
-        styles: [
-            ...React.Children.toArray(initialProps.styles),
-            sheets.getStyleElement(),
-        ],
+        styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
     };
 };

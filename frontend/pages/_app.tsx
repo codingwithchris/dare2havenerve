@@ -14,7 +14,7 @@ import 'fontsource-inter/900-normal.css';
 
 import '../assets/global.css';
 
-import { Layout } from '@/components';
+import { Layout, Progress } from '@/components';
 
 export default function CustomApp(props: AppProps): JSX.Element {
     const { Component, pageProps } = props;
@@ -38,6 +38,7 @@ export default function CustomApp(props: AppProps): JSX.Element {
                 <CssBaseline />
                 <AppStateProvider>
                     <Layout>
+                        <Progress />
                         <Component {...pageProps} />
                     </Layout>
                 </AppStateProvider>

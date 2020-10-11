@@ -35,8 +35,21 @@ const gridStyles = makeStyles((theme: Theme) =>
 
 const cardStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root: {},
+        root: {
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
+            alignItems: 'flex-start',
+        },
+        action: {
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
+            alignItems: 'flex-start',
+            flex: '1',
+        },
         link: {
+            flex: '1',
             textDecoration: 'none',
             display: 'block',
             width: '100%',
@@ -55,7 +68,7 @@ const cardStyles = makeStyles((theme: Theme) =>
             zIndex: 10,
         },
         lockedMedia: {
-            filter: 'blur(4px) grayscale(0.5)',
+            filter: 'grayscale(0.5)',
         },
     })
 );
@@ -71,7 +84,7 @@ const UnlockedCard: React.FC<Pick<Performance, 'name' | 'releaseDate' | 'slug' |
 
     return (
         <Card className={cardClasses.root}>
-            <CardActionArea>
+            <CardActionArea className={cardClasses.action}>
                 <Link href={`/p/${slug}`}>
                     <a className={cardClasses.link}>
                         <CardMedia className={cardClasses.media} image={`${image}?h=225`} component="img" />
@@ -102,14 +115,14 @@ const LockedCard: React.FC<Pick<Performance, 'name' | 'releaseDate' | 'slug' | '
         <Card className={cardClasses.root}>
             <Box className={cardClasses.locked}>
                 <Box className={cardClasses.lockedIcon}>
-                    <LockIcon color="primary" />
+                    <LockIcon color="primary" style={{ fontSize: 50 }} />
                 </Box>
-                <CardMedia className={cardClasses.lockedMedia} image={image} component="img" />
+                <CardMedia className={cardClasses.lockedMedia} image={`${image}?h=225&blur=100`} component="img" />
             </Box>
             <CardContent className={cardClasses.content}>
-                <Box>
+                <Box color="text.disabled">
                     <Typography variant="body2">
-                        <strong>{name}</strong>
+                        This video is locked. Help unlock it by donating on one of our available videos.
                     </Typography>
                 </Box>
             </CardContent>
@@ -137,9 +150,11 @@ const HomePage: NextPage<PerformanceProps> = ({ performances }) => {
                         </Box>
                         <Box color="text.disabled" maxWidth="750px">
                             <Typography variant="body1">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                D2D and The Nerve have joined forces for the very first time to produce a variety show
+                                featuring performers from each of our companies. Expect to see powerhouse musical
+                                performances by the D2D ensemble and stellar scene and monologue work by The Nerve
+                                actors. Watch and enjoy as our companies showcase the type of work that we ordinarily
+                                bring to the stage.
                             </Typography>
                         </Box>
                         <Box mt={7}>
@@ -157,7 +172,7 @@ const HomePage: NextPage<PerformanceProps> = ({ performances }) => {
                 {performances && (
                     <Box id="performances" py={20}>
                         <Container>
-                            <Grid className={gridClasses.container} spacing={3} container>
+                            <Grid className={gridClasses.container} spacing={3} alignItems="stretch" container>
                                 {performances.map((performance) => {
                                     const isReleased = isPast(new Date(performance.releaseDate));
                                     return (
@@ -172,7 +187,7 @@ const HomePage: NextPage<PerformanceProps> = ({ performances }) => {
                                             {isReleased ? (
                                                 <UnlockedCard {...performance} />
                                             ) : (
-                                                <UnlockedCard {...performance} />
+                                                <LockedCard {...performance} />
                                             )}
                                         </Grid>
                                     );
