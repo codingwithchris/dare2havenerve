@@ -2,10 +2,9 @@ import { NextPage } from 'next';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Link from 'next/link';
 import sanityClient from '@/lib/client';
-import classnames from 'classnames';
 import LockIcon from '@material-ui/icons/Lock';
 
-import { isPast } from 'date-fns';
+import { format, isPast } from 'date-fns';
 import {
     Avatar,
     Box,
@@ -22,10 +21,15 @@ import {
 } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 
-import { AccentTitle, Page } from '@/components';
-import { NERVE_WEBSITE, D2D_WEBSITE } from '@/lib/constants';
+import { AccentTitle, CollabIcon, Page } from '@/components';
 import { getCurrentRootURL } from '@/lib/url';
-import { relative } from 'path';
+
+const heroStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        titleBox: {},
+        icon: {},
+    })
+);
 
 const gridStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -93,7 +97,7 @@ const OrgAvatars: React.FC<{ organizations: Organization[] }> = ({ organizations
     return (
         <AvatarGroup className={cardClasses.avatarWrapper} max={2}>
             {organizations.map((org) => (
-                <Box className={cardClasses.avatar}>
+                <Box className={cardClasses.avatar} key={org.name}>
                     <Avatar src={`${org.logo.url}?h=100`} alt={org.logo.alt} />
                 </Box>
             ))}
@@ -126,6 +130,11 @@ const UnlockedCard: React.FC<Pick<Performance, 'name' | 'releaseDate' | 'slug' |
                             <Box color="text.secondary">
                                 <Typography variant="body2">
                                     <strong>{name}</strong>
+                                </Typography>
+                            </Box>
+                            <Box color="text.disabled">
+                                <Typography variant="caption">
+                                    Release Date: {format(new Date(releaseDate), 'MM.d.y')}
                                 </Typography>
                             </Box>
                         </CardContent>
@@ -171,15 +180,23 @@ const LockedCard: React.FC<Pick<Performance, 'name' | 'releaseDate' | 'slug' | '
 
 const HomePage: NextPage<PerformanceProps> = ({ performances }) => {
     const gridClasses = gridStyles();
+    const heroClasses = heroStyles();
     const url = getCurrentRootURL();
 
     return (
-        <Page metaTitle="Dare2Have Nerve Fundraiser" metaDescription="Say something cool here" url={url}>
+        <Page
+            metaTitle="Dare 2 Have Nerve » A Collaborative Fundraiser"
+            metaDescription="D2D and The Nerve have joined forces for the very first time to produce a variety show featuring performers from each of our companies."
+            url={url}
+            imageURL="/dare2have-nerve--meta.jpg"
+            imageAlt="Dare 2 Have Nerve Collaborative Fundraiser Graphic"
+        >
             <Box className="content">
                 {/* Hero */}
                 <Box py={10}>
                     <Container>
-                        <Box mb={3}>
+                        <Box mb={3} className={heroClasses.titleBox}>
+                            <CollabIcon size={100} className={heroClasses.icon} />
                             <AccentTitle brandRep="both" variant="h1">
                                 Dare 2 Have Nerve
                             </AccentTitle>
@@ -227,7 +244,7 @@ const HomePage: NextPage<PerformanceProps> = ({ performances }) => {
                                             {isReleased ? (
                                                 <UnlockedCard {...performance} />
                                             ) : (
-                                                <LockedCard {...performance} />
+                                                <UnlockedCard {...performance} />
                                             )}
                                         </Grid>
                                     );

@@ -22,8 +22,50 @@ import {
 } from '@material-ui/core';
 import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
-import { AccentTitle, Page, DonateForm, Video } from '@/components';
+import { AccentTitle, CollabIcon, Page, DonateForm, Video } from '@/components';
 import { getCurrentRootURL } from '@/lib/url';
+
+const navStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        icon: {
+            [theme.breakpoints.down('sm')]: {
+                height: '36px',
+                width: '36px',
+            },
+        },
+    })
+);
+
+const heroStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            [theme.breakpoints.down('sm')]: {
+                paddingTop: theme.spacing(7),
+                paddingBottom: theme.spacing(7),
+            },
+        },
+    })
+);
+
+const donateStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            [theme.breakpoints.down('sm')]: {
+                paddingTop: theme.spacing(10),
+                paddingBottom: theme.spacing(10),
+            },
+        },
+        instructions: {
+            flex: 1,
+            [theme.breakpoints.down('sm')]: {
+                marginBottom: theme.spacing(3),
+            },
+        },
+        form: {
+            flex: 1,
+        },
+    })
+);
 
 const sponsorStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -87,6 +129,9 @@ const PerformancePage: NextPage<PerformanceProps> = ({
 
     const shouldDisplayCount = !excludeFromCount && queuePosition;
     const url = getCurrentRootURL();
+    const navClasses = navStyles();
+    const heroClasses = heroStyles();
+    const donateClasses = donateStyles();
     const sponsorClasses = sponsorStyles();
 
     return (
@@ -104,16 +149,24 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                         <Grid container alignItems="center" justify="space-between">
                             <Grid item>
                                 <Link href="/" passHref>
-                                    <Button variant="text" color="default" startIcon={<ArrowBackRoundedIcon />}>
-                                        See All Videos
+                                    <Button
+                                        variant="text"
+                                        color="default"
+                                        startIcon={<ArrowBackRoundedIcon />}
+                                        size="small"
+                                    >
+                                        All Videos
                                     </Button>
                                 </Link>
+                            </Grid>
+                            <Grid item style={{ lineHeight: 0 }}>
+                                <CollabIcon className={navClasses.icon} size={48} />
                             </Grid>
 
                             {shouldDisplayCount && (
                                 <Grid item>
                                     <Box textAlign="right" color="text.disabled" className="count">
-                                        <Typography component="p">
+                                        <Typography component="p" variant="body1">
                                             Video{' '}
                                             <Box component="span" color="text.primary">
                                                 {queuePosition}
@@ -130,7 +183,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
 
                 {/* Hero */}
                 <Container className="hero">
-                    <Box py={10} maxWidth="800px">
+                    <Box py={10} maxWidth="800px" className={heroClasses.root}>
                         <AccentTitle variant="h2" component="h1" brandRep="both">
                             {name}
                         </AccentTitle>
@@ -153,7 +206,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                 </Box>
 
                 {/* Donate Section */}
-                <Box pb={15} pt={15} id="dontate" clone>
+                <Box pb={15} pt={15} id="dontate" clone className={donateClasses.root}>
                     <Container>
                         {/* Tee Up */}
                         <Box textAlign="center" className="text-gradient" mb={2}>
@@ -170,7 +223,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
 
                         <Grid container spacing={3} alignContent="center" alignItems="center">
                             {/* Instructions */}
-                            <Grid item sm={6} xs={12}>
+                            <Grid item sm={12} md={6} style={{ flex: 1 }} className={donateClasses.instructions}>
                                 <Paper variant="outlined">
                                     <Box p={3} color="text.secondary">
                                         <Box mb={2}>
@@ -253,7 +306,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                             </Grid>
 
                             {/* Form */}
-                            <Grid item sm={6}>
+                            <Grid item sm={12} md={6} className={donateClasses.form}>
                                 <Box textAlign="center" className="donate">
                                     <DonateForm />
                                 </Box>
@@ -283,7 +336,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
 
                                 <Grid direction="column" container spacing={3}>
                                     {sponsors.map((sponsor) => (
-                                        <Grid item>
+                                        <Grid key={sponsor.name} item>
                                             <Paper variant="outlined" key={sponsor.name}>
                                                 <Card className={sponsorClasses.card}>
                                                     <CardContent className={sponsorClasses.cardContent}>
@@ -322,18 +375,21 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                                                             </Box>
                                                         )}
                                                     </CardContent>
-                                                    <Divider
-                                                        className={sponsorClasses.dividerVertical}
-                                                        orientation="vertical"
-                                                        flexItem
-                                                    />
-                                                    <Divider className={sponsorClasses.dividerHorizontal} />
+
                                                     {sponsor.logo && (
-                                                        <CardMedia
-                                                            className={sponsorClasses.cardMedia}
-                                                            component="img"
-                                                            image={sponsor.logo}
-                                                        />
+                                                        <>
+                                                            <Divider
+                                                                className={sponsorClasses.dividerVertical}
+                                                                orientation="vertical"
+                                                                flexItem
+                                                            />
+                                                            <Divider className={sponsorClasses.dividerHorizontal} />
+                                                            <CardMedia
+                                                                className={sponsorClasses.cardMedia}
+                                                                component="img"
+                                                                image={sponsor.logo}
+                                                            />
+                                                        </>
                                                     )}
                                                 </Card>
                                             </Paper>

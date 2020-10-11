@@ -1,4 +1,5 @@
 export * from './AccentTitle/AccentTitle';
+export * from './CollabIcon/CollabIcon';
 export * from './DonateForm/DonateForm';
 export * from './GoalMeter/GoalMeter';
 export * from './Layout/Layout';
