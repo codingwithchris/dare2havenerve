@@ -3,6 +3,10 @@
     --colorD2D: #FF5349;
 }
 
+body {
+    overflow-x: none;
+}
+
 .text-gradient {
     background: -webkit-linear-gradient(0deg, var(--colorD2D), var(--colorNerve));
     -webkit-background-clip: text;
