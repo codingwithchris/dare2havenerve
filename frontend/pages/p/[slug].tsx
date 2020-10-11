@@ -141,6 +141,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
             url={url}
             imageURL={`${image.url}?h=900`}
             imageAlt={image.alt}
+            hideSEO={!isReleased}
         >
             <Box className="content">
                 {/* Nav Bar */}

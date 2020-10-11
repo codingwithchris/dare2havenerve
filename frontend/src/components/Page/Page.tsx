@@ -1,6 +1,16 @@
 import Head from 'next/head';
 
-export const Page: React.FC<PageProps> = ({ url, metaTitle, metaDescription, imageURL, imageAlt, children }) => {
+export const Page: React.FC<PageProps> = ({
+    url,
+    metaTitle,
+    metaDescription,
+    imageURL,
+    imageAlt,
+    hideSEO,
+    children,
+}) => {
+    const robots = hideSEO ? 'noindex, nofollow' : 'index, follow';
+
     return (
         <>
             <Head>
@@ -9,6 +19,9 @@ export const Page: React.FC<PageProps> = ({ url, metaTitle, metaDescription, ima
                 <meta name="description" content={metaDescription} />
                 <meta name="image" content={imageURL} />
                 <link rel="canonical" href={url} />
+
+                {/* Search engine visibility & directives */}
+                <meta name="robots" content={robots} />
 
                 {/* Opengraph meta tags for Facebook & LinkedIn */}
                 <meta property="og:type" content="website" />
@@ -32,4 +45,5 @@ interface PageProps {
     metaDescription: string;
     imageURL?: string;
     imageAlt?: string;
+    hideSEO?: boolean;
 }

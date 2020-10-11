@@ -158,7 +158,7 @@ const LockedCard: React.FC<Pick<Performance, 'name' | 'releaseDate' | 'slug' | '
         <Card className={cardClasses.root}>
             <Box className={cardClasses.locked}>
                 <Box className={cardClasses.lockedIcon}>
-                    <LockIcon color="secondary" style={{ fontSize: 50 }} />
+                    <LockIcon color="primary" style={{ fontSize: 50 }} />
                 </Box>
                 <CardMedia
                     className={cardClasses.lockedMedia}
@@ -244,7 +244,7 @@ const HomePage: NextPage<PerformanceProps> = ({ performances }) => {
                                             {isReleased ? (
                                                 <UnlockedCard {...performance} />
                                             ) : (
-                                                <UnlockedCard {...performance} />
+                                                <LockedCard {...performance} />
                                             )}
                                         </Grid>
                                     );
