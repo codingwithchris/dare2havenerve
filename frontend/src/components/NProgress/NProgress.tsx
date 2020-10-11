@@ -1,7 +1,7 @@
 import NProgress from 'nprogress';
 import Router from 'next/router';
 
-let timeout;
+let timeout: any;
 
 const start = () => {
     timeout = setTimeout(NProgress.start, 100);
