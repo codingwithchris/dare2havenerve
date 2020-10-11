@@ -153,8 +153,9 @@ const HomePage: NextPage<PerformanceProps> = ({ performances }) => {
                                 D2D and The Nerve have joined forces for the very first time to produce a variety show
                                 featuring performers from each of our companies. Expect to see powerhouse musical
                                 performances by the D2D ensemble and stellar scene and monologue work by The Nerve
-                                actors. Watch and enjoy as our companies showcase the type of work that we ordinarily
-                                bring to the stage.
+                                actors. Oh, and expect the fourth wall to be broken as we give you a grittier, behind
+                                the scenes look at the filming process. Watch and enjoy as our companies showcase the
+                                type of work that we ordinarily bring to the stage.
                             </Typography>
                         </Box>
                         <Box mt={7}>

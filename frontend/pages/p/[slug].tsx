@@ -21,6 +21,7 @@ import {
     Typography,
 } from '@material-ui/core';
 import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
+import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
 import { AccentTitle, Page, DonateForm, Video } from '@/components';
 import { getCurrentRootURL } from '@/lib/url';
 
@@ -99,18 +100,30 @@ const PerformancePage: NextPage<PerformanceProps> = ({
             <Box className="content">
                 {/* Nav Bar */}
                 <Box className="navBar" py={1}>
-                    <Container maxWidth="md">
-                        {shouldDisplayCount && (
-                            <Box textAlign="right" color="text.disabled" className="count">
-                                <Typography component="p">
-                                    Fundraiser Performance{' '}
-                                    <Box component="span" color="text.primary">
-                                        {queuePosition}
+                    <Container>
+                        <Grid container alignItems="center" justify="space-between">
+                            <Grid item>
+                                <Link href="/" passHref>
+                                    <Button variant="text" color="default" startIcon={<ArrowBackRoundedIcon />}>
+                                        See All Videos
+                                    </Button>
+                                </Link>
+                            </Grid>
+
+                            {shouldDisplayCount && (
+                                <Grid item>
+                                    <Box textAlign="right" color="text.disabled" className="count">
+                                        <Typography component="p">
+                                            Video{' '}
+                                            <Box component="span" color="text.primary">
+                                                {queuePosition}
+                                            </Box>{' '}
+                                            of <span className="total">{totalPerformances}</span>
+                                        </Typography>
                                     </Box>
-                                    /<span className="total">{totalPerformances}</span>
-                                </Typography>
-                            </Box>
-                        )}
+                                </Grid>
+                            )}
+                        </Grid>
                     </Container>
                 </Box>
                 <Divider />
