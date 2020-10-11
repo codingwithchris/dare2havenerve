@@ -16,7 +16,7 @@ Router.events.on('routeChangeStart', start);
 Router.events.on('routeChangeComplete', done);
 Router.events.on('routeChangeError', done);
 
-export const Progress = () => {
+export const Progress: React.FC = () => {
     return (
         <style jsx global>
             {`
