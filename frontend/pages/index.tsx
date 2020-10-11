@@ -190,6 +190,7 @@ const HomePage: NextPage<PerformanceProps> = ({ performances }) => {
             url={url}
             imageURL="/dare2have-nerve--meta.jpg"
             imageAlt="Dare 2 Have Nerve Collaborative Fundraiser Graphic"
+            hideSEO={false}
         >
             <Box className="content">
                 {/* Hero */}
