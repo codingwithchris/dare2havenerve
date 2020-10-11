@@ -21,6 +21,12 @@ const themeConfig = createMuiTheme({
             paper: '#111111',
         },
         type: 'dark',
+        primary: {
+            main: '#FF5349',
+        },
+        secondary: {
+            main: '#F25C05',
+        },
     },
     typography: {
         fontFamily: bodyFontFamily.join(','),

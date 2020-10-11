@@ -46,7 +46,27 @@
     "eslintConfig": {
         "extends": [
             "@codingwithchris/eslint-config/react-typescript"
-        ]
+        ],
+        "rules": {
+            "max-len": [
+                "error",
+                {
+                    "code": 120,
+                    "tabWidth": 4
+                }
+            ],
+            "prettier/prettier": [
+                "error",
+                {
+                    "endOfLine": "lf",
+                    "trailingComma": "es5",
+                    "singleQuote": true,
+                    "printWidth": 120,
+                    "tabWidth": 4,
+                    "semi": true
+                }
+            ]
+        }
     },
     "eslintIgnore": [
         "node_modules/",
