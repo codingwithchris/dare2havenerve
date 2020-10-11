@@ -19,7 +19,7 @@ const progressStyles = makeStyles((theme: Theme) =>
     })
 );
 
-export const Video: React.FC<VideoProps> = ({ vimeoID, isLocked }) => {
+export const Video: React.FC<VideoProps> = ({ vimeoID }) => {
     const progressClasses = progressStyles();
 
     return (
@@ -46,5 +46,4 @@ export const Video: React.FC<VideoProps> = ({ vimeoID, isLocked }) => {
 
 export interface VideoProps {
     vimeoID: string;
-    isLocked: boolean;
 }

@@ -186,7 +186,7 @@ const HomePage: NextPage<PerformanceProps> = ({ performances }) => {
     return (
         <Page
             metaTitle="Dare 2 Have Nerve » A Collaborative Fundraiser"
-            metaDescription="D2D and The Nerve have joined forces for the very first time to produce a variety show featuring performers from each of our companies."
+            metaDescription="D2D and The Nerve have joined forces for the very first time to produce a variety show featuring performers from each of our companies." //eslint-disable-line
             url={url}
             imageURL="/dare2have-nerve--meta.jpg"
             imageAlt="Dare 2 Have Nerve Collaborative Fundraiser Graphic"

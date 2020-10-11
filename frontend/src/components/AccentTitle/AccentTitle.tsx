@@ -22,4 +22,5 @@ export const AccentTitle: React.FC<AccentTitleProps> = (props) => {
 
 export interface AccentTitleProps extends TypographyProps {
     brandRep: 'nerve' | 'd2d' | 'both';
+    component?: string;
 }

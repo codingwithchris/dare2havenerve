@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
-import { AppStateProvider } from '@/context';
 
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -39,12 +38,11 @@ export default function CustomApp(props: AppProps): JSX.Element {
             <ThemeProvider theme={theme}>
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
                 <CssBaseline />
-                <AppStateProvider>
-                    <Layout>
-                        <Progress />
-                        <Component {...pageProps} />
-                    </Layout>
-                </AppStateProvider>
+
+                <Layout>
+                    <Progress />
+                    <Component {...pageProps} />
+                </Layout>
             </ThemeProvider>
         </>
     );
