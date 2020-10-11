@@ -118,7 +118,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                                             <Box component="span" color="text.primary">
                                                 {queuePosition}
                                             </Box>{' '}
-                                            of <span className="total">{totalPerformances}</span>
+                                            / <span className="total">{totalPerformances}</span>
                                         </Typography>
                                     </Box>
                                 </Grid>
