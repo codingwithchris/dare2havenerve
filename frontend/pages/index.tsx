@@ -162,7 +162,7 @@ const LockedCard: React.FC<Pick<Performance, 'name' | 'releaseDate' | 'slug' | '
                 </Box>
                 <CardMedia
                     className={cardClasses.lockedMedia}
-                    image={`${image.url}?h=350&blur=100`}
+                    image={`${image.url}?h=350&blur=100&q=50`}
                     alt={image.alt}
                     component="img"
                 />
