@@ -6,8 +6,8 @@ import classnames from 'classnames';
 import LockIcon from '@material-ui/icons/Lock';
 
 import { isPast } from 'date-fns';
-
 import {
+    Avatar,
     Box,
     Button,
     Card,
@@ -20,6 +20,7 @@ import {
     Paper,
     Typography,
 } from '@material-ui/core';
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
 
 import { AccentTitle, Page } from '@/components';
 import { NERVE_WEBSITE, D2D_WEBSITE } from '@/lib/constants';
@@ -36,6 +37,8 @@ const gridStyles = makeStyles((theme: Theme) =>
 const cardStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
+            border: '1px solid',
+            borderColor: theme.palette.divider,
             display: 'flex',
             flexDirection: 'column',
             height: '100%',
@@ -48,11 +51,23 @@ const cardStyles = makeStyles((theme: Theme) =>
             alignItems: 'flex-start',
             flex: '1',
         },
+        avatarWrapper: {
+            position: 'absolute',
+            left: 10,
+            top: 10,
+            zIndex: 10,
+        },
+        avatar: {
+            border: '1px solid',
+            borderColor: theme.palette.text.disabled,
+            borderRadius: '50%',
+        },
         link: {
             flex: '1',
             textDecoration: 'none',
             display: 'block',
             width: '100%',
+            position: 'relative',
         },
         unlocked: {},
         content: {},
@@ -73,6 +88,19 @@ const cardStyles = makeStyles((theme: Theme) =>
     })
 );
 
+const OrgAvatars: React.FC<{ organizations: Organization[] }> = ({ organizations }) => {
+    const cardClasses = cardStyles();
+    return (
+        <AvatarGroup className={cardClasses.avatarWrapper} max={2}>
+            {organizations.map((org) => (
+                <Box className={cardClasses.avatar}>
+                    <Avatar src={`${org.logo.url}?h=100`} alt={org.logo.alt} />
+                </Box>
+            ))}
+        </AvatarGroup>
+    );
+};
+
 const UnlockedCard: React.FC<Pick<Performance, 'name' | 'releaseDate' | 'slug' | 'image' | 'organizations'>> = ({
     name,
     releaseDate,
@@ -87,7 +115,13 @@ const UnlockedCard: React.FC<Pick<Performance, 'name' | 'releaseDate' | 'slug' |
             <CardActionArea className={cardClasses.action}>
                 <Link href={`/p/${slug}`}>
                     <a className={cardClasses.link}>
-                        <CardMedia className={cardClasses.media} image={`${image}?h=225`} component="img" />
+                        {organizations?.length > 0 && <OrgAvatars organizations={organizations} />}
+                        <CardMedia
+                            className={cardClasses.media}
+                            image={`${image.url}?h=225`}
+                            alt={image.alt}
+                            component="img"
+                        />
                         <CardContent className={cardClasses.content}>
                             <Box color="text.secondary">
                                 <Typography variant="body2">
@@ -115,9 +149,14 @@ const LockedCard: React.FC<Pick<Performance, 'name' | 'releaseDate' | 'slug' | '
         <Card className={cardClasses.root}>
             <Box className={cardClasses.locked}>
                 <Box className={cardClasses.lockedIcon}>
-                    <LockIcon color="primary" style={{ fontSize: 50 }} />
+                    <LockIcon color="secondary" style={{ fontSize: 50 }} />
                 </Box>
-                <CardMedia className={cardClasses.lockedMedia} image={`${image}?h=225&blur=100`} component="img" />
+                <CardMedia
+                    className={cardClasses.lockedMedia}
+                    image={`${image.url}?h=225&blur=100`}
+                    alt={image.alt}
+                    component="img"
+                />
             </Box>
             <CardContent className={cardClasses.content}>
                 <Box color="text.disabled">
@@ -213,10 +252,16 @@ const allPerformancesQuery = `*[_type == "performance"] | order(releaseDate asc)
     releaseDate,
     vimeoID,
     "slug": slug.current,
-    "image": image.asset->url,
+    "image": {
+        "url": image.asset->url,
+        "alt": image.asset->alt,
+    },
     organizations[]->{
         name,
-        "logo": logo.asset._ref,
+        "logo": {
+            "url": logo.asset->url,
+            "alt": logo.asset->alt,
+        },
         primaryColor,
         website,
         ein
@@ -241,7 +286,10 @@ HomePage.getInitialProps = async () => {
 
 type Organization = {
     name: string;
-    logo: string;
+    logo: {
+        alt: string;
+        url: string;
+    };
     primaryColor: string;
     description: string;
     website: string;
@@ -255,7 +303,10 @@ type Performance = {
     vimeoID: string;
     releaseDate: string;
     excludeFromCount: boolean;
-    image: string;
+    image: {
+        alt: string;
+        url: string;
+    };
     organizations: Organization[];
 };
 

@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
                         <Typography variant="h6">A creative collaboration between...</Typography>
                     </Box>
                     <Grid container spacing={5} alignItems="stretch" justify="space-between">
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <Paper>
                                 <Card>
                                     <Box border="1px solid" borderColor="secondary.main" borderRadius="inherit">
@@ -82,7 +82,7 @@ export const Footer: React.FC = () => {
                                 </Card>
                             </Paper>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <Paper variant="outlined">
                                 <Card>
                                     <Box border="1px solid" borderColor="primary.main" borderRadius="inherit">
