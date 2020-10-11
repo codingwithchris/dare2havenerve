@@ -188,13 +188,11 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                             {name}
                         </AccentTitle>
 
-                        {isReleased && (
-                            <Box mt={3}>
-                                <Typography variant="h6" component="p" color="textSecondary">
-                                    {tldr}
-                                </Typography>
-                            </Box>
-                        )}
+                        <Box mt={3}>
+                            <Typography variant="h6" component="p" color="textSecondary">
+                                {tldr}
+                            </Typography>
+                        </Box>
                     </Box>
                 </Container>
 
@@ -202,7 +200,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                 <Box>
                     <Container>
                         <Box>
-                            <Video vimeoID={vimeoID} isLocked={!isReleased} />
+                            <Video vimeoID={vimeoID} />
                         </Box>
                     </Container>
                 </Box>
@@ -318,7 +316,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                 </Box>
 
                 {/* Sponsors Section */}
-                {isReleased && sponsors?.length > 0 && (
+                {sponsors?.length > 0 && (
                     <>
                         <Divider />
                         <Box py={15}>
