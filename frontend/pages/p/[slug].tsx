@@ -149,7 +149,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                     <Container>
                         <Grid container alignItems="center" justify="space-between">
                             <Grid item>
-                                <Link href="/#performances" passHref>
+                                <Link href="/" passHref>
                                     <Button
                                         variant="text"
                                         color="default"
