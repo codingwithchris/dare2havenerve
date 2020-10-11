@@ -1,12 +1,7 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-
-const localPalette = {
-    black: '#000000',
-    white: '#FFFFFF',
-};
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 const bodyFontFamily = [
-    'Montserrat',
+    'Inter',
     'system-ui',
     '-apple-system',
     'BlinkMacSystemFont',
@@ -18,48 +13,43 @@ const bodyFontFamily = [
     'sans-serif',
 ];
 
-const headingFontFamily = [
-    'Montserrat',
-    'system-ui',
-    '-apple-system',
-    'BlinkMacSystemFont',
-    '"Helvetica Neue"',
-    '"Segoe UI"',
-    'Oxygen-Sans',
-    'Ubuntu',
-    'Cantarell',
-    'sans-serif',
-];
-
-export const theme = createMuiTheme({
+// eslint-disable-next-line
+const themeConfig = createMuiTheme({
     palette: {
-        primary: {
-            main: localPalette.black,
+        background: {
+            default: '#000000',
+            paper: '#111111',
         },
-        secondary: {
-            main: localPalette.white,
-        },
+        type: 'dark',
     },
     typography: {
+        fontFamily: bodyFontFamily.join(','),
         fontSize: 17,
         h1: {
-            fontFamily: headingFontFamily.join(','),
-            fontWeight: 700,
+            fontWeight: 900,
         },
         h2: {
-            fontFamily: headingFontFamily.join(','),
-            fontWeight: 700,
+            fontWeight: 900,
         },
         h3: {
-            fontFamily: headingFontFamily.join(','),
-            fontWeight: 700,
+            fontWeight: 900,
         },
         h4: {
-            fontFamily: headingFontFamily.join(','),
-            fontWeight: 700,
+            fontWeight: 900,
+        },
+        h5: {
+            fontWeight: 900,
+        },
+        h6: {
+            fontWeight: 600,
         },
         body1: {
-            fontFamily: bodyFontFamily.join(','),
+            fontWeight: 400,
+        },
+        body2: {
+            fontWeight: 400,
         },
     },
 });
+
+export const theme = responsiveFontSizes(themeConfig);

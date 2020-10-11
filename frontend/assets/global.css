@@ -1,0 +1,24 @@
+:root {
+    --colorNerve: #F25C05;
+    --colorD2D: #FF5349;
+}
+
+.text-gradient {
+    background: -webkit-linear-gradient(0deg, var(--colorD2D), var(--colorNerve));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bg-gradient {
+    background: -webkit-linear-gradient(0deg, var(--colorD2D), var(--colorNerve));
+}
+
+.content-link {
+    color: var(--colorD2D);
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.content-link:hover {
+    color: var(--colorNerve);
+}

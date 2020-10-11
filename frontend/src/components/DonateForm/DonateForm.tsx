@@ -24,7 +24,7 @@ export const DonateForm: React.FC = () => {
                     seamless="seamless"
                     src="https://donorbox.org/embed/dare2havenerve-fundraiser?donation_meter_color=%2341a2d8"
                     style={{
-                        maxWidth: '500px',
+                        maxWidth: '425px',
                         minWidth: '250px',
                         maxHeight: 'none !important',
                     }}

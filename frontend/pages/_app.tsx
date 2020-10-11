@@ -5,11 +5,14 @@ import { AppStateProvider } from '@/context';
 
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+
 import { theme } from '@/theme';
-import 'fontsource-roboto/400-normal.css';
-import 'fontsource-roboto/500-normal.css';
-import 'fontsource-roboto/700-normal.css';
-import 'fontsource-montserrat/700-normal.css';
+
+import 'fontsource-inter/400-normal.css';
+import 'fontsource-inter/600-normal.css';
+import 'fontsource-inter/900-normal.css';
+
+import '../assets/global.css';
 
 import { Layout } from '@/components';
 

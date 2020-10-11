@@ -17,8 +17,8 @@ export default {
             description: 'Sponsor bio',
         },
         {
-            name: 'image',
-            title: 'Image',
+            name: 'logo',
+            title: 'Logo',
             type: 'image',
             description: 'Sponsor logo',
         },

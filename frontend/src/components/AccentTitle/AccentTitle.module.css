@@ -1,0 +1,16 @@
+.title {}
+
+.titleNerve{
+    color: var(--colorNerve);
+}
+
+.titleD2D{
+    color: var(--colorD2D);
+}
+
+.titleBoth{
+    background: linear-gradient(90deg, var(--colorD2D), var(--colorNerve));
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
