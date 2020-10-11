@@ -27,7 +27,7 @@ export const Video: React.FC<VideoProps> = ({ vimeoID }) => {
             <Box className={progressClasses.root} textAlign="center">
                 <CircularProgress color="primary" size={50} />
                 <Box mt={5} color="text.disabled">
-                    <Typography variant="body1">Awesomeness loading...</Typography>
+                    <Typography variant="body1">Collaborative awesomeness loading...</Typography>
                 </Box>
             </Box>
 
