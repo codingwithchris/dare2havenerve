@@ -5,7 +5,6 @@ import {
     IconButton,
     Container,
     Card,
-    CardHeader,
     CardActions,
     CardContent,
     Divider,
@@ -98,8 +97,8 @@ export const Footer: React.FC = () => {
                                             </Box>
                                             <Box color="text.secondary" mt={2}>
                                                 <Typography variant="body2">
-                                                    D2D is driven by the passion of our local community to build and
-                                                    portray stunning works of art.
+                                                    D2D was created out of the passion of Dayton based artists, to
+                                                    cultivate an environment where local talent can flourish.
                                                 </Typography>
                                             </Box>
                                         </CardContent>
