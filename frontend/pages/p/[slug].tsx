@@ -7,21 +7,23 @@ import { isPast } from 'date-fns';
 import { NERVE_WEBSITE, D2D_WEBSITE } from '@/lib/constants';
 
 import {
+    Avatar,
     Box,
+    Badge,
     Button,
     Card,
     CardContent,
-    CardActions,
     CardMedia,
     Container,
     Divider,
     Grid,
     Paper,
-    Icon,
+    Tooltip,
     Typography,
 } from '@material-ui/core';
-import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
-import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
+
+import { ArrowForwardRounded, ArrowBackRounded } from '@material-ui/icons';
 import { AccentTitle, CollabIcon, Page, DonateForm, Video } from '@/components';
 import { getCurrentRootURL } from '@/lib/url';
 
@@ -47,12 +49,39 @@ const heroStyles = makeStyles((theme: Theme) =>
     })
 );
 
+const videoStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        credits: {},
+        creditsItem: {
+            display: 'flex',
+            alignItems: 'center',
+            padding: theme.spacing(3),
+        },
+        creditsItemAvatar: {
+            marginRight: theme.spacing(2),
+        },
+        creditsItemContent: {},
+        creditsContainer: {
+            marginTop: theme.spacing(6),
+        },
+        orgsTitle: {
+            marginBottom: theme.spacing(2),
+        },
+        orgsAvatarGroup: {
+            justifyContent: 'center',
+        },
+        orgsAvatar: {
+            borderRadius: '50%',
+        },
+    })
+);
+
 const donateStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             [theme.breakpoints.down('sm')]: {
-                paddingTop: theme.spacing(7),
-                paddingBottom: theme.spacing(7),
+                paddingTop: theme.spacing(8),
+                paddingBottom: theme.spacing(8),
             },
         },
         instructions: {
@@ -123,6 +152,30 @@ const sponsorStyles = makeStyles((theme: Theme) =>
     })
 );
 
+const PresentingOrgs: React.FC<{ organizations: Organization[] }> = ({ organizations }) => {
+    const videoClasses = videoStyles();
+    return (
+        <Box>
+            <Box color="text.disabled" className={videoClasses.orgsTitle}>
+                <Typography variant="h6">
+                    {organizations?.length > 1 ? 'Featured Theatres' : 'Featured Theatre'}
+                </Typography>
+            </Box>
+            <AvatarGroup max={2} className={videoClasses.orgsAvatarGroup}>
+                {organizations.map((org) => (
+                    <Box key={org.name} className={videoClasses.orgsAvatar}>
+                        <Tooltip title={org.name}>
+                            <Box clone width={100} height={100} border={`2px solid ${org.primaryColor}`}>
+                                <Avatar src={`${org.logo.url}?h=100`} alt={org.logo.alt} />
+                            </Box>
+                        </Tooltip>
+                    </Box>
+                ))}
+            </AvatarGroup>
+        </Box>
+    );
+};
+
 const PerformancePage: NextPage<PerformanceProps> = ({
     name,
     tldr,
@@ -146,6 +199,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
     const url = getCurrentRootURL();
     const navClasses = navStyles();
     const heroClasses = heroStyles();
+    const videoClasses = videoStyles();
     const donateClasses = donateStyles();
     const sponsorClasses = sponsorStyles();
 
@@ -168,7 +222,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                                     <Button
                                         variant="text"
                                         color="default"
-                                        startIcon={<ArrowBackRoundedIcon />}
+                                        startIcon={<ArrowBackRounded />}
                                         size="small"
                                     >
                                         All Videos
@@ -215,10 +269,11 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                 {/* Video */}
                 <Box>
                     <Container disableGutters>
-                        <Box>
-                            <Video vimeoID={vimeoID} />
-                        </Box>
+                        <Video vimeoID={vimeoID} />
                     </Container>
+                    <Box mt={10}>
+                        <PresentingOrgs organizations={organizations} />
+                    </Box>
                 </Box>
 
                 {/* Donate Section */}
@@ -338,7 +393,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                         <Box py={15}>
                             <Container maxWidth="md">
                                 {/* Tee Up */}
-                                <Box textAlign="center" mb={10}>
+                                <Box textAlign="center" mb={7}>
                                     <Typography variant="h5" component="h2" color="textSecondary">
                                         Donor Match
                                     </Typography>
@@ -384,7 +439,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                                                                     color="default"
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
-                                                                    endIcon={<ArrowForwardRoundedIcon color="action" />}
+                                                                    endIcon={<ArrowForwardRounded color="action" />}
                                                                 >
                                                                     Sponsor Website
                                                                 </Button>
@@ -411,7 +466,98 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                     </>
                 )}
 
-                {/* Org highlight Section */}
+                <Divider />
+                <Box className={videoClasses.creditsContainer} pt={10} pb={14}>
+                    <Container maxWidth="md">
+                        <Box textAlign="center" mb={7}>
+                            <Typography variant="h5" component="h2" color="textSecondary">
+                                Production Crew
+                            </Typography>
+                            <Box maxWidth="500px" margin="0 auto" mt={2}>
+                                <Typography variant="subtitle1" component="p" color="textSecondary">
+                                    We could never have done this on our own. We had an awesome group of people help us
+                                    make it happen.
+                                </Typography>
+                            </Box>
+                        </Box>
+
+                        <Grid container spacing={2} className={videoClasses.credits}>
+                            <Grid item md={6} sm={12} className={videoClasses.creditsItem}>
+                                <Box className={videoClasses.creditsItem}>
+                                    <Box className={videoClasses.creditsItemAvatar}>
+                                        <AvatarGroup max={2}>
+                                            <Box clone width={75} height={75}>
+                                                <Avatar src="/indigo.jpg" alt="Indigo Life Logo" />
+                                            </Box>
+                                            <Box clone width={75} height={75} style={{ marginLeft: '-30px' }}>
+                                                <Avatar src="/andrew.jpg" alt="Andrew White from Indigo Life" />
+                                            </Box>
+                                        </AvatarGroup>
+                                    </Box>
+                                    <Box className={videoClasses.creditsItemContent}>
+                                        <Typography variant="body2" color="textSecondary">
+                                            Andrew White // Indigo Life
+                                        </Typography>
+                                        <Box color="text.disabled">
+                                            <Typography variant="caption">Director of Photography</Typography>
+                                        </Box>
+                                    </Box>
+                                </Box>
+                            </Grid>
+                            <Grid item md={6} sm={12} className={videoClasses.creditsItem}>
+                                <Box className={videoClasses.creditsItem}>
+                                    <Box className={videoClasses.creditsItemAvatar}>
+                                        <Box clone width={75} height={75}>
+                                            <Avatar src="/sam.jpg" alt="Samuel Thompson" />
+                                        </Box>
+                                    </Box>
+                                    <Box className={videoClasses.creditsItemContent}>
+                                        <Typography variant="body2" color="textSecondary">
+                                            Samuel Thompson
+                                        </Typography>
+                                        <Box color="text.disabled">
+                                            <Typography variant="caption">Sound Technician</Typography>
+                                        </Box>
+                                    </Box>
+                                </Box>
+                            </Grid>
+                            <Grid item md={6} sm={12} className={videoClasses.creditsItem}>
+                                <Box className={videoClasses.creditsItem}>
+                                    <Box className={videoClasses.creditsItemAvatar}>
+                                        <Box clone width={75} height={75}>
+                                            <Avatar src="/joe.jpg" alt="Joseph Swann" />
+                                        </Box>
+                                    </Box>
+                                    <Box className={videoClasses.creditsItemContent}>
+                                        <Typography variant="body2" color="textSecondary">
+                                            Joseph Swann
+                                        </Typography>
+                                        <Box color="text.disabled">
+                                            <Typography variant="caption">2nd Camera Op & PA</Typography>
+                                        </Box>
+                                    </Box>
+                                </Box>
+                            </Grid>
+                            <Grid item md={6} sm={12} className={videoClasses.creditsItem}>
+                                <Box className={videoClasses.creditsItem}>
+                                    <Box className={videoClasses.creditsItemAvatar}>
+                                        <Box clone width={75} height={75}>
+                                            <Avatar alt="Josh Burnette">JB</Avatar>
+                                        </Box>
+                                    </Box>
+                                    <Box className={videoClasses.creditsItemContent}>
+                                        <Typography variant="body2" color="textSecondary">
+                                            Josh Burnette
+                                        </Typography>
+                                        <Box color="text.disabled">
+                                            <Typography variant="caption">Post-prod Sound Engineer</Typography>
+                                        </Box>
+                                    </Box>
+                                </Box>
+                            </Grid>
+                        </Grid>
+                    </Container>
+                </Box>
             </Box>
         </Page>
     );
@@ -429,9 +575,11 @@ const singlePerformanceQuery = `*[_type == "performance" && slug.current == $slu
     },
     organizations[]->{
         name,
-        "logo": logo.asset._ref,
+        "logo": {
+            "url": logo.asset->url,
+            "alt": logo.asset->alt,
+        },
         primaryColor,
-        description,
         website,
         ein
     },
@@ -482,7 +630,10 @@ PerformancePage.getInitialProps = async (context) => {
 
 type Organization = {
     name: string;
-    logo: string;
+    logo: {
+        alt: string;
+        url: string;
+    };
     primaryColor: string;
     description: string;
     website: string;
