@@ -51,8 +51,8 @@ const donateStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             [theme.breakpoints.down('sm')]: {
-                paddingTop: theme.spacing(10),
-                paddingBottom: theme.spacing(10),
+                paddingTop: theme.spacing(7),
+                paddingBottom: theme.spacing(7),
             },
         },
         instructions: {
@@ -71,20 +71,28 @@ const sponsorStyles = makeStyles((theme: Theme) =>
     createStyles({
         card: {
             display: 'flex',
-            alignItems: 'center',
+            alignItems: 'stretch',
             [theme.breakpoints.down('sm')]: {
                 display: 'block',
             },
         },
+        cardMediaWrapper: {
+            background: theme.palette.common.white,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginRight: 0,
+            marginLeft: 'auto',
+        },
         cardMedia: {
-            flex: '1',
-            width: '300px',
             padding: theme.spacing(3),
+            width: '300px',
             [theme.breakpoints.down('sm')]: {
                 margin: '0 auto',
                 maxWidth: '250px',
                 marginTop: theme.spacing(3),
                 marginBottom: theme.spacing(3),
+
                 width: '100%',
             },
         },
@@ -224,7 +232,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
 
                         <Grid container spacing={3} alignContent="center" alignItems="center">
                             {/* Instructions */}
-                            <Grid item sm={12} md={6} style={{ flex: 1 }} className={donateClasses.instructions}>
+                            <Grid item md={6} xs={12} style={{ flex: 1 }} className={donateClasses.instructions}>
                                 <Paper variant="outlined">
                                     <Box p={3} color="text.secondary">
                                         <Box mb={2}>
@@ -307,7 +315,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                             </Grid>
 
                             {/* Form */}
-                            <Grid item sm={12} md={6} className={donateClasses.form}>
+                            <Grid item md={6} xs={12} className={donateClasses.form}>
                                 <Box textAlign="center" className="donate">
                                     <DonateForm />
                                 </Box>
@@ -378,19 +386,13 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                                                     </CardContent>
 
                                                     {sponsor.logo && (
-                                                        <>
-                                                            <Divider
-                                                                className={sponsorClasses.dividerVertical}
-                                                                orientation="vertical"
-                                                                flexItem
-                                                            />
-                                                            <Divider className={sponsorClasses.dividerHorizontal} />
+                                                        <Box className={sponsorClasses.cardMediaWrapper}>
                                                             <CardMedia
                                                                 className={sponsorClasses.cardMedia}
                                                                 component="img"
-                                                                image={sponsor.logo}
+                                                                image={`${sponsor.logo}?h=250`}
                                                             />
-                                                        </>
+                                                        </Box>
                                                     )}
                                                 </Card>
                                             </Paper>
