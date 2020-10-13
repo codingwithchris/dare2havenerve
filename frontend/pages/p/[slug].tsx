@@ -98,6 +98,9 @@ const sponsorStyles = makeStyles((theme: Theme) =>
         },
         cardContent: {
             padding: theme.spacing(2),
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
         },
         dividerVertical: {
             display: 'none',
