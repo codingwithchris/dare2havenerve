@@ -17,6 +17,7 @@ import {
     Divider,
     Grid,
     Paper,
+    Tooltip,
     Typography,
 } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
@@ -104,7 +105,9 @@ const OrgAvatars: React.FC<{ organizations: Organization[] }> = ({ organizations
         <AvatarGroup className={cardClasses.avatarWrapper} max={2}>
             {organizations.map((org) => (
                 <Box className={cardClasses.avatar} key={org.name}>
-                    <Avatar src={`${org.logo.url}?h=100`} alt={org.logo.alt} />
+                    <Tooltip title={`Featuring ${org.name}`}>
+                        <Avatar src={`${org.logo.url}?h=100`} alt={org.logo.alt} />
+                    </Tooltip>
                 </Box>
             ))}
         </AvatarGroup>
