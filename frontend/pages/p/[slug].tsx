@@ -165,11 +165,11 @@ const PresentingOrgs: React.FC<{ organizations: Organization[] }> = ({ organizat
             <AvatarGroup max={2} className={videoClasses.orgsAvatarGroup}>
                 {organizations.map((org) => (
                     <Box key={org.name} className={videoClasses.orgsAvatar}>
-                        <Tooltip title={org.name}>
-                            <Box clone width={100} height={100} border={`2px solid ${org.primaryColor}`}>
+                        <Box clone style={{ width: '100px', height: '100px' }} border={`2px solid ${org.primaryColor}`}>
+                            <Tooltip title={org.name}>
                                 <Avatar src={`${org.logo.url}?h=100`} alt={org.logo.alt} />
-                            </Box>
-                        </Tooltip>
+                            </Tooltip>
+                        </Box>
                     </Box>
                 ))}
             </AvatarGroup>
@@ -487,12 +487,17 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                                 <Box className={videoClasses.creditsItem}>
                                     <Box className={videoClasses.creditsItemAvatar}>
                                         <AvatarGroup max={2}>
-                                            <Box clone width={75} height={75}>
-                                                <Avatar src="/indigo.jpg" alt="Indigo Life Logo" />
-                                            </Box>
-                                            <Box clone width={75} height={75} style={{ marginLeft: '-30px' }}>
-                                                <Avatar src="/andrew.jpg" alt="Andrew White from Indigo Life" />
-                                            </Box>
+                                            <Avatar
+                                                src="/indigo.jpg"
+                                                alt="Indigo Life Logo"
+                                                style={{ width: '75px', height: '75px' }}
+                                            />
+
+                                            <Avatar
+                                                src="/andrew.jpg"
+                                                alt="Andrew White from Indigo Life"
+                                                style={{ width: '75px', height: '75px', marginLeft: '-30px' }}
+                                            />
                                         </AvatarGroup>
                                     </Box>
                                     <Box className={videoClasses.creditsItemContent}>
@@ -508,9 +513,11 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                             <Grid item md={6} sm={12} className={videoClasses.creditsItem}>
                                 <Box className={videoClasses.creditsItem}>
                                     <Box className={videoClasses.creditsItemAvatar}>
-                                        <Box clone width={75} height={75}>
-                                            <Avatar src="/sam.jpg" alt="Samuel Thompson" />
-                                        </Box>
+                                        <Avatar
+                                            src="/sam.jpg"
+                                            alt="Samuel Thompson"
+                                            style={{ width: '75px', height: '75px' }}
+                                        />
                                     </Box>
                                     <Box className={videoClasses.creditsItemContent}>
                                         <Typography variant="body2" color="textSecondary">
@@ -525,9 +532,11 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                             <Grid item md={6} sm={12} className={videoClasses.creditsItem}>
                                 <Box className={videoClasses.creditsItem}>
                                     <Box className={videoClasses.creditsItemAvatar}>
-                                        <Box clone width={75} height={75}>
-                                            <Avatar src="/joe.jpg" alt="Joseph Swann" />
-                                        </Box>
+                                        <Avatar
+                                            src="/joe.jpg"
+                                            alt="Joseph Swann"
+                                            style={{ width: '75px', height: '75px' }}
+                                        />
                                     </Box>
                                     <Box className={videoClasses.creditsItemContent}>
                                         <Typography variant="body2" color="textSecondary">
@@ -542,9 +551,9 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                             <Grid item md={6} sm={12} className={videoClasses.creditsItem}>
                                 <Box className={videoClasses.creditsItem}>
                                     <Box className={videoClasses.creditsItemAvatar}>
-                                        <Box clone width={75} height={75}>
-                                            <Avatar alt="Josh Burnette">JB</Avatar>
-                                        </Box>
+                                        <Avatar style={{ width: '75px', height: '75px' }} alt="Josh Burnette">
+                                            JB
+                                        </Avatar>
                                     </Box>
                                     <Box className={videoClasses.creditsItemContent}>
                                         <Typography variant="body2" color="textSecondary">
