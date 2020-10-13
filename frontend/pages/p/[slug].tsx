@@ -56,13 +56,17 @@ const donateStyles = makeStyles((theme: Theme) =>
             },
         },
         instructions: {
-            flex: 1,
+            [theme.breakpoints.up('md')]: {
+                flex: '1',
+            },
             [theme.breakpoints.down('sm')]: {
                 marginBottom: theme.spacing(3),
             },
         },
         form: {
-            flex: 1,
+            [theme.breakpoints.up('md')]: {
+                flex: '1',
+            },
         },
     })
 );
@@ -235,7 +239,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
 
                         <Grid container spacing={3} alignContent="center" alignItems="center">
                             {/* Instructions */}
-                            <Grid item md={6} xs={12} style={{ flex: 1 }} className={donateClasses.instructions}>
+                            <Grid item xs={12} className={donateClasses.instructions}>
                                 <Paper variant="outlined">
                                     <Box p={3} color="text.secondary">
                                         <Box mb={2}>
@@ -318,7 +322,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                             </Grid>
 
                             {/* Form */}
-                            <Grid item md={6} xs={12} className={donateClasses.form}>
+                            <Grid item xs={12} className={donateClasses.form}>
                                 <Box textAlign="center" className="donate">
                                     <DonateForm />
                                 </Box>
