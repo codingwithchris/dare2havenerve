@@ -32,7 +32,7 @@ export const Footer: React.FC = () => {
                                 <Card>
                                     <Box border="1px solid" borderColor="secondary.main" borderRadius="inherit">
                                         <CardContent>
-                                            <Box mb={2}>
+                                            <Box mb={3} width={60} height={60} clone>
                                                 <Avatar alt="Nerve Theatre Logo" src="/nerve-logo.jpg" />
                                             </Box>
                                             <Typography variant="subtitle1">
@@ -86,7 +86,7 @@ export const Footer: React.FC = () => {
                                 <Card>
                                     <Box border="1px solid" borderColor="primary.main" borderRadius="inherit">
                                         <CardContent>
-                                            <Box mb={2}>
+                                            <Box mb={3} width={60} height={60} clone>
                                                 <Avatar alt="D2D Logo" src="/d2d-logo.jpg" />
                                             </Box>
                                             <Typography variant="subtitle1">

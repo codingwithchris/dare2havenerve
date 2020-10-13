@@ -394,7 +394,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                             <Container maxWidth="md">
                                 {/* Tee Up */}
                                 <Box textAlign="center" mb={7}>
-                                    <Typography variant="h5" component="h2" color="textSecondary">
+                                    <Typography variant="h4" component="h2" color="textSecondary">
                                         Donor Match
                                     </Typography>
                                     <Box maxWidth="500px" margin="0 auto" mt={2}>
@@ -473,10 +473,10 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                             <Typography variant="h5" component="h2" color="textSecondary">
                                 Production Crew
                             </Typography>
-                            <Box maxWidth="500px" margin="0 auto" mt={2}>
-                                <Typography variant="subtitle1" component="p" color="textSecondary">
+                            <Box maxWidth="500px" margin="0 auto" mt={2} mb={4}>
+                                <Typography variant="body1" component="p" color="textSecondary">
                                     We could never have done this on our own. We had an awesome group of people help us
-                                    make it happen.
+                                    out.
                                 </Typography>
                             </Box>
                         </Box>
