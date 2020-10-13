@@ -65,7 +65,8 @@ const videoStyles = makeStyles((theme: Theme) =>
             marginTop: theme.spacing(6),
         },
         orgsTitle: {
-            marginBottom: theme.spacing(2),
+            textAlign: 'center',
+            marginBottom: theme.spacing(3),
         },
         orgsAvatarGroup: {
             justifyContent: 'center',
