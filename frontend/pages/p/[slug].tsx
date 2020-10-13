@@ -199,7 +199,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
 
                 {/* Video */}
                 <Box>
-                    <Container>
+                    <Container disableGutters>
                         <Box>
                             <Video vimeoID={vimeoID} />
                         </Box>
