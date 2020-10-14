@@ -561,7 +561,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                                             Josh Burnette
                                         </Typography>
                                         <Box color="text.disabled">
-                                            <Typography variant="caption">Post-prod Sound Engineer</Typography>
+                                            <Typography variant="caption">Post Production Sound Engineer</Typography>
                                         </Box>
                                     </Box>
                                 </Box>
