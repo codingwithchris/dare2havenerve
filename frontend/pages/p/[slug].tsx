@@ -551,9 +551,11 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                             <Grid item md={6} sm={12} className={videoClasses.creditsItem}>
                                 <Box className={videoClasses.creditsItem}>
                                     <Box className={videoClasses.creditsItemAvatar}>
-                                        <Avatar style={{ width: '75px', height: '75px' }} alt="Josh Burnette">
-                                            JB
-                                        </Avatar>
+                                        <Avatar
+                                            style={{ width: '75px', height: '75px' }}
+                                            src="/josh.jpg"
+                                            alt="Josh Burnette"
+                                        />
                                     </Box>
                                     <Box className={videoClasses.creditsItemContent}>
                                         <Typography variant="body2" color="textSecondary">
