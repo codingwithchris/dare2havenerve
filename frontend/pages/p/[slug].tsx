@@ -305,7 +305,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                                         </Box>
                                         <Box mb={2}>
                                             <Typography>
-                                                For the very first time{' '}
+                                                For the very first time,{' '}
                                                 <a
                                                     href={D2D_WEBSITE}
                                                     target="_blank"
@@ -323,24 +323,23 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                                                 >
                                                     The Nerve
                                                 </a>
-                                                , have joined forces to build an alliance through creative
-                                                collaboration.
+                                                have built an alliance through creative collaboration.
                                             </Typography>
                                         </Box>
                                         <Box mb={2}>
                                             <Typography>
                                                 We've filmed a total of 12 kick-ass videos, but here's the deal:{' '}
                                                 <Box component="strong" color="text.primary">
-                                                    we need your help
+                                                    We need your help
                                                 </Box>{' '}
-                                                to unlock the next video in the series.
+                                                to make the videos available to everyone.
                                             </Typography>
                                         </Box>
                                         <Box mb={2} color="text.primary">
                                             <Typography>
                                                 <strong>
-                                                    We need $150 in donations per video to unlock the next one and hit
-                                                    our goal of $1,800
+                                                    It'll take $150 in donations to unlock each video in the series and
+                                                    hit our goal of $1,800
                                                 </strong>
                                                 .
                                             </Typography>
