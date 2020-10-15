@@ -321,7 +321,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                                                     rel="noopener noreferrer"
                                                     className="content-link"
                                                 >
-                                                    The Nerve
+                                                    The Nerve{' '}
                                                 </a>
                                                 have built an alliance through creative collaboration.
                                             </Typography>
