@@ -62,7 +62,10 @@ const videoStyles = makeStyles((theme: Theme) =>
         },
         creditsItemContent: {},
         creditsContainer: {
-            marginTop: theme.spacing(6),
+            [theme.breakpoints.down('sm')]: {
+                paddingTop: theme.spacing(8),
+                paddingBottom: theme.spacing(8),
+            },
         },
         orgsTitle: {
             textAlign: 'center',
@@ -103,6 +106,12 @@ const donateStyles = makeStyles((theme: Theme) =>
 
 const sponsorStyles = makeStyles((theme: Theme) =>
     createStyles({
+        section: {
+            [theme.breakpoints.down('sm')]: {
+                paddingTop: theme.spacing(8),
+                paddingBottom: theme.spacing(8),
+            },
+        },
         card: {
             display: 'flex',
             alignItems: 'stretch',
@@ -400,7 +409,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                 {sponsors?.length > 0 && (
                     <>
                         <Divider />
-                        <Box py={15}>
+                        <Box py={15} className={sponsorClasses.section}>
                             <Container maxWidth="md">
                                 {/* Tee Up */}
                                 <Box textAlign="center" mb={7}>
