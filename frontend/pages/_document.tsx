@@ -3,12 +3,30 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import { theme } from '@/theme';
 
+/* eslint-disable react/no-danger */
+
 export default class CustomDocument extends Document {
     render(): JSX.Element {
         return (
             <Html lang="en">
                 <Head>
                     <meta name="theme-color" content={theme.palette.primary.main} />
+
+                    {/* Global Site Tag (gtag.js) - Google Analytics */}
+                    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-52894205-3" />
+
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                                window.dataLayer = window.dataLayer || [];
+                                function gtag(){dataLayer.push(arguments);}
+                                gtag('js', new Date());
+                                gtag('config', 'UA-52894205-3', {
+                                    page_path: window.location.pathname,
+                                });
+                            `,
+                        }}
+                    />
                 </Head>
                 <body>
                     <Main />
