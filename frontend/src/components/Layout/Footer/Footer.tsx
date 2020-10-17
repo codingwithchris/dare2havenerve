@@ -22,16 +22,21 @@ export const Footer: React.FC = () => {
         <footer>
             <Divider />
             <Box py={5} id="footer-content">
-                <Container maxWidth="md" style={{ overflowX: 'hidden' }}>
+                <Container maxWidth="md">
                     <Box mb={3} textAlign="center" color="text.secondary">
                         <Typography variant="h6">A creative collaboration between...</Typography>
                     </Box>
+                </Container>
+                <Container maxWidth="md" disableGutters>
                     <Grid
                         container
                         spacing={5}
                         alignItems="stretch"
                         justify="space-between"
-                        style={{ overflowX: 'hidden' }}
+                        style={{
+                            margin: 0,
+                            width: '100%',
+                        }}
                     >
                         <Grid item md={6} xs={12}>
                             <Paper>

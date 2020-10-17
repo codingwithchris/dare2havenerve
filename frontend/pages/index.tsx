@@ -41,9 +41,8 @@ const gridStyles = makeStyles((theme: Theme) =>
             },
         },
         container: {
-            // margin: 0,
-            // width: '100%',
-            // overflowX: 'hidden',
+            margin: 0,
+            width: '100%',
         },
         item: {},
     })
@@ -242,14 +241,8 @@ const HomePage: NextPage<PerformanceProps> = ({ performances }) => {
                 {/* Performance Grid */}
                 {performances && (
                     <Box id="performances" py={20} className={gridClasses.section}>
-                        <Container style={{ overflowX: 'hidden' }}>
-                            <Grid
-                                className={gridClasses.container}
-                                style={{ overflowX: 'hidden' }}
-                                spacing={3}
-                                alignItems="stretch"
-                                container
-                            >
+                        <Container disableGutters>
+                            <Grid className={gridClasses.container} spacing={3} alignItems="stretch" container>
                                 {performances.map((performance) => {
                                     const isReleased = isPast(new Date(performance.releaseDate));
                                     return (
