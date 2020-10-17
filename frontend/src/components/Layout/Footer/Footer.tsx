@@ -54,11 +54,8 @@ export const Footer: React.FC = () => {
                                                 <strong>The Nerve</strong>
                                             </Typography>
                                             <Box color="text.disabled">
-                                                <Typography
-                                                    variant="caption"
-                                                    style={{ pointerEvents: 'none', textDecoration: 'none' }}
-                                                >
-                                                    EIN: 47-1626207
+                                                <Typography variant="caption">
+                                                    EIN: 47<span>-</span>1626207
                                                 </Typography>
                                             </Box>
                                             <Box color="text.secondary" mt={2}>
@@ -117,11 +114,8 @@ export const Footer: React.FC = () => {
                                                 <strong>D2D</strong>
                                             </Typography>
                                             <Box color="text.disabled">
-                                                <Typography
-                                                    variant="caption"
-                                                    style={{ pointerEvents: 'none', textDecoration: 'none' }}
-                                                >
-                                                    EIN: 47-2897868
+                                                <Typography variant="caption">
+                                                    EIN: 47<span>-</span>2897868
                                                 </Typography>
                                             </Box>
                                             <Box color="text.secondary" mt={2}>
