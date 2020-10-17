@@ -296,7 +296,7 @@ const allPerformancesQuery = `*[_type == "performance"] | order(releaseDate asc)
 
 }`;
 
-HomePage.getInitialProps = async () => {
+export const getStaticProps = async () => {
     // It's important to default the slug so that it doesn't return "undefined"
 
     const getAllPerformances = sanityClient.fetch(allPerformancesQuery, {});
@@ -304,10 +304,14 @@ HomePage.getInitialProps = async () => {
 
     return performances
         ? {
-              performances,
+              props: {
+                  performances,
+              },
           }
         : {
-              performances: undefined,
+              props: {
+                  performances: undefined,
+              },
           };
 };
 
