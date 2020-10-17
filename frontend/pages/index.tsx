@@ -21,8 +21,9 @@ import {
     Typography,
 } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import Skeleton from '@material-ui/lab/Skeleton';
 
-import { AccentTitle, CollabIcon, Page } from '@/components';
+import { AccentTitle, CollabIcon, Image, Page } from '@/components';
 import { getCurrentRootURL } from '@/lib/url';
 
 const heroStyles = makeStyles((theme: Theme) =>
@@ -129,12 +130,11 @@ const UnlockedCard: React.FC<Pick<Performance, 'name' | 'releaseDate' | 'slug' |
                 <Link href={`/p/${slug}`}>
                     <a className={cardClasses.link}>
                         {organizations?.length > 0 && <OrgAvatars organizations={organizations} />}
-                        <CardMedia
-                            className={cardClasses.media}
-                            image={`${image.url}?h=350`}
-                            alt={image.alt}
-                            component="img"
-                        />
+
+                        <CardMedia className={cardClasses.media}>
+                            <Image src={`${image.url}?h=350`} alt={image.alt} aspectRatio={311 / 175} />
+                        </CardMedia>
+
                         <CardContent className={cardClasses.content}>
                             <Box color="text.secondary">
                                 <Typography variant="body2">
@@ -254,7 +254,7 @@ const HomePage: NextPage<PerformanceProps> = ({ performances }) => {
                                             {isReleased ? (
                                                 <UnlockedCard {...performance} />
                                             ) : (
-                                                <LockedCard {...performance} />
+                                                <UnlockedCard {...performance} />
                                             )}
                                         </Grid>
                                     );
