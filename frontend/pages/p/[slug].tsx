@@ -216,8 +216,8 @@ const PerformancePage: NextPage<PerformanceProps> = ({
             <Box className="content">
                 {/* Nav Bar */}
                 <Box className="navBar" py={1}>
-                    <Container>
-                        <Grid container alignItems="center" justify="space-between">
+                    <Container style={{ overflowX: 'hidden' }}>
+                        <Grid container alignItems="center" justify="space-between" style={{ overflowX: 'hidden' }}>
                             <Grid item>
                                 <Link href="/" passHref>
                                     <Button
@@ -293,9 +293,15 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                             </Typography>
                         </Box>
 
-                        <Grid container spacing={3} alignContent="center" alignItems="center">
+                        <Grid
+                            container
+                            spacing={3}
+                            alignContent="center"
+                            alignItems="center"
+                            style={{ overflowX: 'hidden' }}
+                        >
                             {/* Instructions */}
-                            <Grid item xs={12} className={donateClasses.instructions}>
+                            <Grid item xs={12} className={donateClasses.instructions} style={{ overflowX: 'hidden' }}>
                                 <Paper variant="outlined">
                                     <Box p={3} color="text.secondary">
                                         <Box mb={2}>
@@ -377,7 +383,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                             </Grid>
 
                             {/* Form */}
-                            <Grid item xs={12} className={donateClasses.form}>
+                            <Grid item xs={12} className={donateClasses.form} style={{ overflowX: 'hidden' }}>
                                 <Box textAlign="center" className="donate">
                                     <DonateForm />
                                 </Box>
@@ -405,7 +411,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                                     </Box>
                                 </Box>
 
-                                <Grid direction="column" container spacing={3}>
+                                <Grid direction="column" container spacing={3} style={{ overflowX: 'hidden' }}>
                                     {sponsors.map((sponsor) => (
                                         <Grid key={sponsor.name} item>
                                             <Paper variant="outlined" key={sponsor.name}>
@@ -468,7 +474,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
 
                 <Divider />
                 <Box className={videoClasses.creditsContainer} pt={10} pb={14}>
-                    <Container maxWidth="md">
+                    <Container maxWidth="md" style={{ overflowX: 'hidden' }}>
                         <Box textAlign="center" mb={7}>
                             <Typography variant="h5" component="h2" color="textSecondary">
                                 Production Crew
@@ -481,7 +487,7 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                             </Box>
                         </Box>
 
-                        <Grid container spacing={2} className={videoClasses.credits}>
+                        <Grid container spacing={2} className={videoClasses.credits} style={{ overflowX: 'hidden' }}>
                             <Grid item md={6} sm={12} className={videoClasses.creditsItem}>
                                 <Box className={videoClasses.creditsItem}>
                                     <Box className={videoClasses.creditsItemAvatar}>
