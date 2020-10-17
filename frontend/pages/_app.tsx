@@ -29,7 +29,7 @@ export default function CustomApp(props: AppProps): JSX.Element {
     return (
         <>
             <Head>
-                <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+                <meta name="viewport" content="initial-scale=1, width=device-width" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/site-icons/apple-touch-icon.png" />
                 <link rel="icon" type="image/png" sizes="32x32" href="/site-icons/favicon-32x32.png" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/site-icons/favicon-16x16.png" />
