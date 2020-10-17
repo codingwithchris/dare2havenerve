@@ -40,8 +40,8 @@ export const Footer: React.FC = () => {
                     >
                         <Grid item md={6} xs={12}>
                             <Paper>
-                                <Card>
-                                    <Box border="1px solid" borderColor="secondary.main" borderRadius="inherit">
+                                <Box border="1px solid" borderColor="secondary.main" clone>
+                                    <Card>
                                         <CardContent>
                                             <Box mb={3}>
                                                 <Avatar
@@ -92,14 +92,14 @@ export const Footer: React.FC = () => {
                                                 website
                                             </Button>
                                         </CardActions>
-                                    </Box>
-                                </Card>
+                                    </Card>
+                                </Box>
                             </Paper>
                         </Grid>
                         <Grid item md={6} xs={12}>
                             <Paper variant="outlined">
-                                <Card>
-                                    <Box border="1px solid" borderColor="primary.main" borderRadius="inherit">
+                                <Box border="1px solid" borderColor="primary.main" clone>
+                                    <Card>
                                         <CardContent>
                                             <Box mb={3}>
                                                 <Avatar
@@ -149,8 +149,8 @@ export const Footer: React.FC = () => {
                                                 website
                                             </Button>
                                         </CardActions>
-                                    </Box>
-                                </Card>
+                                    </Card>
+                                </Box>
                             </Paper>
                         </Grid>
                     </Grid>
