@@ -290,10 +290,10 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                 <Box pb={15} pt={15} id="donate" className={donateClasses.root}>
                     <Container>
                         {/* Tee Up */}
-                        <Box textAlign="center" className="text-gradient" mb={2}>
-                            <Typography variant="h5" component="h2">
+                        <Box textAlign="center" mb={2}>
+                            <AccentTitle variant="h5" component="h2" brandRep="both">
                                 Keep Theatre Alive In Dayton
-                            </Typography>
+                            </AccentTitle>
                         </Box>
 
                         <Box textAlign="center" mb={10} color="text.secondary">
