@@ -8,7 +8,7 @@ export const Image: React.FC<ImageProps> = ({ src, alt, aspectRatio }) => {
     useEffect(() => {
         const currentImage = ref.current;
         if (currentImage && currentImage.complete) {
-            setLoaded(true);
+            setLoaded(false);
         }
     }, [ref]);
 
