@@ -398,7 +398,9 @@ const PerformancePage: NextPage<PerformanceProps> = ({
                             {/* Form */}
                             <Grid item xs={12} className={donateClasses.form}>
                                 <Box textAlign="center" className="donate">
-                                    <DonateForm />
+                                    <Typography variant="body1">
+                                        UPDATE: Our fundraiser was a HUGE success. Between the generous support of our donors and the sponsorship matches we received, we collectively raised <strong>$4,554</strong>!! This money was split equally between our two organizations.
+                                    </Typography>
                                 </Box>
                             </Grid>
                         </Grid>
