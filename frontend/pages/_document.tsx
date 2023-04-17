@@ -10,6 +10,7 @@ export default class CustomDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
+                    <meta name="robots" content="noindex, nofollow" />
                     <meta name="theme-color" content={theme.palette.primary.main} />
 
                     {/* Global Site Tag (gtag.js) - Google Analytics */}
